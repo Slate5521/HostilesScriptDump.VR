@@ -1,0 +1,1 @@
+call compile preprocessFileLineNumbers "MIKO\scripts\init.sqf";
