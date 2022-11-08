@@ -1,3 +1,5 @@
+#include "macros.sqf";
+
 // Local: Called on player respawn.
 MIKO_L_event_onPlayerRespawn = 
 {
@@ -30,7 +32,7 @@ MIKO_S_onPlayerRespawn =
 	// Check if there's a saved loadout. Also grab a default loadout while we're at it.
 	// Note: I'm not concerned with the performance impact of possibly generating two 
 	//		 loadouts every respawn because it's an infrequent operation.
-	_savedLoadout   = _unit getVariable "MIKO_savedLoadout";
+	_savedLoadout   = _unit getVariable MIKO_LOADOUT;
 	_defaultLoadout = [roleDescription _unit] call MIKO_loadoutScript;
 
 	// Check if there's a saved loadout.
