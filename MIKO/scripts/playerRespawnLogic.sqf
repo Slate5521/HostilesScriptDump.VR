@@ -31,7 +31,7 @@ MIKO_S_onPlayerRespawn =
 	// Note: I'm not concerned with the performance impact of possibly generating two 
 	//		 loadouts every respawn because it's an infrequent operation.
 	_savedLoadout   = _unit getVariable "MIKO_SAVED_LOADOUT";
-	_defaultLoadout = [roleDescription _unit] call MIKO_loadoutScript;
+	_defaultLoadout = [_unit] call MIKO_loadoutScript;
 
 	// Check if there's a saved loadout.
 	if(isNil "_savedLoadout") then
