@@ -4,6 +4,15 @@ MIKO_L_event_onPlayerRespawn =
 	// _unit 	
 	//	* Unit/player that has just respawned.
 	params ["_unit"];
+	
+	// If Zeus object, do nothing with the loadout - just set as invincible.
+	if(typeOf _unit == "VirtualCurator_F") 
+		exitWith
+		{
+			_unit allowDamage false;
+			_unit enableSimulation false;
+		};
+
 	_unit remoteExec ["MIKO_S_onPlayerRespawn", 2];
 };
 
@@ -19,14 +28,6 @@ MIKO_S_onPlayerRespawn =
 	//	* Default loadout.
 	private ["_savedLoadout", "_defaultLoadout"];
 	
-	// If Zeus object, do nothing with the loadout - just set as invincible.
-	if(typeOf _unit == "VirtualCurator_F") 
-		exitWith
-		{
-			_unit allowDamage false;
-			_unit enableSimulation false;
-		};
-
 	// Check if there's a saved loadout. Also grab a default loadout while we're at it.
 	// Note: I'm not concerned with the performance impact of possibly generating two 
 	//		 loadouts every respawn because it's an infrequent operation.
